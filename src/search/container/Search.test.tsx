@@ -14,9 +14,10 @@ test('shoud match the snapshot when render Search Component', () => {
   //given
 
   //when
+  const createMockStore = configureStore();
   const component = render(
     <Provider
-      store={configureStore([() => () => () => {}])({
+      store={createMockStore({
         search: { keyword: '', autoCompletes: [] }
       })}
     >
