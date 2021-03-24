@@ -13,7 +13,7 @@ export function callApi({
   data
 }: AxiosRequestConfig): Promise<{
   isSuccess: boolean;
-  data: string;
+  data: any;
   resultCode: number;
   resultMessage: string;
 }> {

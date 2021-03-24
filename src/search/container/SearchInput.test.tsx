@@ -9,27 +9,8 @@ import mySearchReducer from '../state/ducks';
 import SearchInput from './SearchInput';
 import searchSaga from '../../search/state/saga';
 import userSaga from '../../user/state/saga';
+import { AxiosRequestConfig } from 'axios';
 
-// jest.mock('../../common/util/api', () =>
-//   new Promise((resolve, reject) => {
-//     setTimeout(
-//       () =>
-//         resolve({
-//           isSuccess: true,
-//           data: [
-//             {
-//               name: 'user12',
-//               tag: 'study',
-//               department: 'dst'
-//             }
-//           ],
-//           resultCode: 200,
-//           resultMessage: 'what'
-//         }),
-//       2000
-//     );
-//   }).then(value => value)
-// );
 let store: any;
 
 beforeEach(() => {
@@ -63,36 +44,36 @@ test('should show inputbox when rendering', () => {
   expect(inputbox).toBeDefined();
 });
 
-test('should show changed text when change text', async () => {
-  //given
-  render(
-    <Provider store={store}>
-      <SearchInput />
-    </Provider>
-  );
+// test('should show changed text when change text', async () => {
+//   //given
+//   render(
+//     <Provider store={store}>
+//       <SearchInput />
+//     </Provider>
+//   );
 
-  //when
-  const inputbox = screen.getByRole('combobox');
-  fireEvent.change(inputbox, { target: { value: 'user1' } });
-  const text = inputbox.getAttribute('value');
-  await setTimeout(() => {}, 3000);
-  //then
-  expect(text).toBe('user1');
-});
+//   //when
+//   const inputbox = screen.getByPlaceholderText('검색어를 입력해주세요');
+//   fireEvent.change(inputbox, { target: { value: 'user1' } });
+//   const text = inputbox.getAttribute('value');
+//   await setTimeout(() => {}, 3000);
+//   //then
+//   expect(text).toBe('user1');
+// });
 
-test('should be called mock function when change text', async () => {
-  //given
+// test('should be called mock function when change text', async () => {
+//   //given
 
-  render(
-    <Provider store={store}>
-      <SearchInput />
-    </Provider>
-  );
+//   render(
+//     <Provider store={store}>
+//       <SearchInput />
+//     </Provider>
+//   );
 
-  //when
-  const inputbox = screen.getByRole('combobox');
-  fireEvent.change(inputbox, { target: { value: 'user1' } });
-  const text = inputbox.getAttribute('value');
-  await setTimeout(() => {}, 3000);
-  screen.debug();
-});
+//   //when
+//   const inputbox = screen.getByRole('combobox');
+//   fireEvent.change(inputbox, { target: { value: 'user1' } });
+//   const text = inputbox.getAttribute('value');
+//   await setTimeout(() => {}, 3000);
+//   screen.debug();
+// });
