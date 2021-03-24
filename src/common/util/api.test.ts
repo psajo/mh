@@ -1,15 +1,29 @@
 // import { fireEvent, render, screen } from '@testing-library/react';
-import { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { callApi } from './api';
+import MockAdapter from 'axios-mock-adapter';
 
-jest.mock('axios', () => (config: AxiosRequestConfig) =>
-  new Promise(resolve => {
-    console.log('hi');
-    resolve({ isSuccess: true, data: [], resultCode: 0, resultMessage: '' });
-  })
-);
-test('', () => {
-  callApi({}).then(data => {
-    console.log(data);
+beforeEach(() => {
+  const mock = new MockAdapter(axios);
+  mock.onGet('/user/search').reply(200, {
+    data: [],
+    resultCode: 0,
+    resultMessage: 'test'
   });
+});
+
+test('11', async () => {
+  const prom = callApi({
+    url: '/user/search',
+    params: { keyword: 'user1' }
+  });
+  let count = 0;
+
+  await prom.then(data => {
+    return ++count;
+  });
+  await prom.then(data => {
+    return ++count;
+  });
+  expect(count).toBe(2);
 });
