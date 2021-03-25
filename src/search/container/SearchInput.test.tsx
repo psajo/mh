@@ -9,8 +9,12 @@ import mySearchReducer from '../state/ducks';
 import SearchInput from './SearchInput';
 import searchSaga from '../../search/state/saga';
 import userSaga from '../../user/state/saga';
+<<<<<<< HEAD
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
+=======
+import { AxiosRequestConfig } from 'axios';
+>>>>>>> d2bb2c78b4e5f0447e3786a0d42599cbe6b4c039
 
 let store: any;
 
@@ -45,6 +49,7 @@ test('should show inputbox when rendering', () => {
   expect(inputbox).toBeDefined();
 });
 
+<<<<<<< HEAD
 test('should show changed text when change text', async () => {
   //given
   const mock = new MockAdapter(axios);
@@ -82,3 +87,38 @@ test('should be called mock function when change text', async () => {
   // await setTimeout(() => {}, 3000);
   // screen.debug();
 });
+=======
+// test('should show changed text when change text', async () => {
+//   //given
+//   render(
+//     <Provider store={store}>
+//       <SearchInput />
+//     </Provider>
+//   );
+
+//   //when
+//   const inputbox = screen.getByPlaceholderText('검색어를 입력해주세요');
+//   fireEvent.change(inputbox, { target: { value: 'user1' } });
+//   const text = inputbox.getAttribute('value');
+//   await setTimeout(() => {}, 3000);
+//   //then
+//   expect(text).toBe('user1');
+// });
+
+// test('should be called mock function when change text', async () => {
+//   //given
+
+//   render(
+//     <Provider store={store}>
+//       <SearchInput />
+//     </Provider>
+//   );
+
+//   //when
+//   const inputbox = screen.getByRole('combobox');
+//   fireEvent.change(inputbox, { target: { value: 'user1' } });
+//   const text = inputbox.getAttribute('value');
+//   await setTimeout(() => {}, 3000);
+//   screen.debug();
+// });
+>>>>>>> d2bb2c78b4e5f0447e3786a0d42599cbe6b4c039

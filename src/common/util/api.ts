@@ -12,7 +12,7 @@ export function callApi({
   params
 }: AxiosRequestConfig): Promise<{
   isSuccess: boolean;
-  data: string;
+  data: any;
   resultCode: number;
   resultMessage: string;
 }> {
