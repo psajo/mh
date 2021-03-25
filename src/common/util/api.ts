@@ -5,31 +5,22 @@ import { API_HOST } from '../constant';
 export const ResultCode = {
   Success: 0
 };
+const axiosInstance = axios.create({ baseURL: API_HOST });
 
 export function callApi({
-  method = 'get',
-  url,
-  params,
-  data
+  url = '',
+  params
 }: AxiosRequestConfig): Promise<{
   isSuccess: boolean;
   data: string;
   resultCode: number;
   resultMessage: string;
 }> {
-  return axios({
-    url,
-    method,
-    baseURL: API_HOST,
-    params,
-    data,
-    withCredentials: true
-  }).then(response => {
+  return axiosInstance.get(url, { params }).then(response => {
     const { resultCode, resultMessage } = response.data;
     if (resultCode < 0) {
       message.error(resultMessage);
     }
-    message.error(resultMessage);
     return {
       isSuccess: resultCode === ResultCode.Success,
       data: response.data.data,
