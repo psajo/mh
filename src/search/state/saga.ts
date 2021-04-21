@@ -14,7 +14,7 @@ import {
 } from './ducks';
 import { callApi } from '../../common/util/api';
 
-function* fetchAutoComplete({
+export function* fetchAutoComplete({
   payload
 }: ReturnType<typeof fetchAutoCompletesAC>) {
   const { keyword } = payload;
